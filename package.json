@@ -18,7 +18,7 @@
   "dependencies": {
     "@capacitor/app": "7.0.0",
     "@capacitor/core": "7.0.1",
-    "@capacitor/haptics": "7.0.0",
+    "@capacitor/haptics": "7.0.0", 
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
     "@ionic/react": "^8.0.0",
@@ -51,5 +51,5 @@
     "vite": "~5.2.0",
     "vitest": "^0.34.6"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project" 
 }
