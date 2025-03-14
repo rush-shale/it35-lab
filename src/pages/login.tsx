@@ -3,16 +3,13 @@ import {
   IonButton,
   IonContent, 
   IonHeader, 
-  IonIcon, 
   IonInput, 
-  IonInputPasswordToggle, 
   IonItem, 
   IonPage, 
   IonTitle, 
   IonToolbar, 
   useIonRouter
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
 
 const Login: React.FC = () => {
   const navigation = useIonRouter();
@@ -32,40 +29,41 @@ const Login: React.FC = () => {
           <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent className='ion-padding'>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <IonAvatar>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+          
+          {/* Avatar */}
+          <IonAvatar style={{ width: '80px', height: '80px', marginBottom: '20px' }}>
             <img alt="User Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </IonAvatar>
-
-          <IonItem>
-            <IonInput label="Username:" placeholder="Enter your username" />
+         
+          {/* Email Input */}
+          <IonItem style={{ marginBottom: '15px', width: '80%' }}>
+            <IonInput label="Email:" placeholder="Enter your email" />
           </IonItem>
+
+          {/* Password Input */}
+          <IonItem style={{ marginBottom: '15px', width: '80%' }}>
+            <IonInput type="password" label="Password:" placeholder="Enter your password" />
+          </IonItem>
+
+          {/* Buttons */}
+          <IonButton onClick={doLogin} expand="block" style={{ width: '80%', height: '50px', fontWeight: 'bold' }}>
+            Login
+          </IonButton>
           
-          <IonItem>
-            <IonInput type="password" label="Password:" placeholder="Enter your password">
-              <IonInputPasswordToggle slot="end" />
-            </IonInput>
-          </IonItem>
-        </div>
+          <IonButton 
+            onClick={goToSignUp} 
+            expand="block" 
+            fill="outline" 
+            color="secondary" 
+            style={{ width: '80%', height: '50px', fontWeight: 'bold', marginTop: '10px' }}
+          >
+            Sign Up
+          </IonButton>
 
-        <IonButton
-          onClick={doLogin}
-          expand="full"
-          style={{ height: '70px', fontWeight: 'bold' }}
-        >
-          Login
-        </IonButton>
-        
-        <IonButton
-          onClick={goToSignUp}
-          expand="full"
-          fill="outline"
-          color="secondary"
-          style={{ height: '70px', fontWeight: 'bold' }}
-        >
-          Sign Up
-        </IonButton>
+        </div>
       </IonContent>
     </IonPage>
   );
