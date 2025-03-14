@@ -54,7 +54,7 @@ const Login: React.FC = () => {
         </IonButton>
         
         <IonButton onClick={goToSignUp} expand="full" fill="outline" color="secondary">
-          create an account
+          Don't have an account register here
         </IonButton>
       </IonContent>
     </IonPage>
@@ -62,3 +62,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+ 
