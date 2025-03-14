@@ -54,7 +54,7 @@ const Login: React.FC = () => {
         </IonButton>
         
         <IonButton onClick={goToSignUp} expand="full" fill="outline" color="secondary">
-          Sign Up
+          create an account
         </IonButton>
       </IonContent>
     </IonPage>
