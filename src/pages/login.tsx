@@ -49,11 +49,21 @@ const Login: React.FC = () => {
           </IonItem>
         </div>
 
-        <IonButton onClick={doLogin} expand="full">
+        <IonButton
+          onClick={doLogin}
+          expand="full"
+          style={{ height: '75px', fontWeight: 'bold' }}
+        >
           Login
         </IonButton>
         
-        <IonButton onClick={goToSignUp} expand="full" fill="outline" color="secondary">
+        <IonButton
+          onClick={goToSignUp}
+          expand="full"
+          fill="outline"
+          color="secondary"
+          style={{ height: '75px', fontWeight: 'bold' }}
+        >
           Sign Up
         </IonButton>
       </IonContent>
