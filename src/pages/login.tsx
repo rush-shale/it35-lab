@@ -60,7 +60,7 @@ const Login: React.FC = () => {
             color="secondary" 
             style={{ width: '80%', height: '50px', fontWeight: 'bold', marginTop: '10px' }}
           >
-            Sign Up
+            Don't have an account? Register here
           </IonButton>
 
         </div>
