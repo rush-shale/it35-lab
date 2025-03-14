@@ -52,7 +52,7 @@ const Login: React.FC = () => {
         <IonButton
           onClick={doLogin}
           expand="full"
-          style={{ height: '75px', fontWeight: 'bold' }}
+          style={{ height: '70px', fontWeight: 'bold' }}
         >
           Login
         </IonButton>
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
           expand="full"
           fill="outline"
           color="secondary"
-          style={{ height: '75px', fontWeight: 'bold' }}
+          style={{ height: '70px', fontWeight: 'bold' }}
         >
           Sign Up
         </IonButton>
