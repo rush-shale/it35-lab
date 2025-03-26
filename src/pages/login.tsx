@@ -1,30 +1,37 @@
+import React, { useState } from 'react';
 import { 
-  IonAvatar,
   IonButton,
   IonContent, 
   IonHeader, 
-  IonIcon, 
-  IonInput, 
-  IonInputPasswordToggle, 
-  IonItem, 
   IonPage, 
   IonTitle, 
   IonToolbar, 
-  useIonRouter
+  IonInput,
+  IonItem,
+  IonLabel,
+  useIonRouter,
+  IonAlert
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
+import './Login.css'; 
 
 const Login: React.FC = () => {
   const navigation = useIonRouter();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
   const doLogin = () => {
+    if (username === '' || password === '') {
+      setShowAlert(true);
+    } else {
       navigation.push('/it35-lab/app', 'forward', 'replace');
-  };
-  
-  const goToSignUp = () => {
-      navigation.push('/signup', 'forward', 'replace');
-  };
-  
+    }
+  }
+
+  const goToRegister = () => {
+    navigation.push('/register', 'forward', 'replace'); // Navigate to the Register page
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -32,30 +39,37 @@ const Login: React.FC = () => {
           <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className='ion-padding'>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <IonAvatar>
-            <img alt="User Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </IonAvatar>
-
-          <IonItem>
-            <IonInput label="Username:" placeholder="Enter your username" />
-          </IonItem>
-          
-          <IonItem>
-            <IonInput type="password" label="Password:" placeholder="Enter your password">
-              <IonInputPasswordToggle slot="end" />
-            </IonInput>
-          </IonItem>
-        </div>
-
-        <IonButton onClick={doLogin} expand="full">
+      <IonContent className='ion-padding background-image'>
+        <IonItem>
+          <IonLabel position="floating">Username</IonLabel>
+          <IonInput 
+            value={username} 
+            onIonChange={e => setUsername(e.detail.value!)} 
+            required 
+          />
+        </IonItem>
+        <IonItem>
+          <IonLabel position="floating">Password</IonLabel>
+          <IonInput 
+            type="password" 
+            value={password} 
+            onIonChange={e => setPassword(e.detail.value!)} 
+            required 
+          />
+        </IonItem>
+        <IonButton onClick={doLogin} expand="full" className="ion-margin-top">
           Login
         </IonButton>
-        
-        <IonButton onClick={goToSignUp} expand="full" fill="outline" color="secondary">
-          Sign Up
+        <IonButton onClick={goToRegister} expand="full" className="ion-margin-top" fill="clear">
+          DON'T HAVE AN ACCOUNT? REGISTER HERE
         </IonButton>
+        <IonAlert
+          isOpen={showAlert}
+          onDidDismiss={() => setShowAlert(false)}
+          header={'Error'}
+          message={'Please enter both username and password.'}
+          buttons={['OK']}
+        />
       </IonContent>
     </IonPage>
   );
