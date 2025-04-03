@@ -1,72 +1,90 @@
-import { 
-  IonAvatar,
-  IonButton,
-  IonContent, 
-  IonHeader, 
-  IonInput, 
-  IonItem, 
-  IonPage, 
-  IonTitle, 
-  IonToolbar, 
-  useIonRouter
-} from '@ionic/react';
+<IonPage>
+  <IonContent 
+    className="ion-padding"
+    style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh'
+    }}
+  >
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '100%',
+      maxWidth: '400px',
+      textAlign: 'center'
+    }}>
+      <IonAvatar
+        style={{
+          width: '120px',
+          height: '120px',
+          borderRadius: '50%', 
+          overflow: 'hidden'
+        }}
+      >
+        <IonIcon 
+          icon={logoIonic}
+          color="primary"
+          style={{ fontSize: '100px', color: '#6c757d' }} 
+        />
+      </IonAvatar>
+      <h1>USER LOGIN</h1>
 
-const Login: React.FC = () => {
-  const navigation = useIonRouter();
+      <IonInput
+        label="Email"
+        labelPlacement="floating"
+        fill="outline"
+        type="email"
+        placeholder="Enter Email"
+        value={email}
+        onIonChange={e => setEmail(e.detail.value!)}
+        style={{ width: '100%', marginTop: '10px' }}
+      />
 
-  const doLogin = () => {
-      navigation.push('/it35-lab/app', 'forward', 'replace');
-  };
-  
-  const goToSignUp = () => {
-      navigation.push('/signup', 'forward', 'replace');
-  };
-  
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <IonInput
+        fill="outline"
+        type="password"
+        placeholder="Password"
+        value={password}
+        onIonChange={e => setPassword(e.detail.value!)}
+        style={{ width: '100%', marginTop: '10px' }}
+      >
+        <IonInputPasswordToggle slot="end" />
+      </IonInput>
 
-      <IonContent className='ion-padding'>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-          
-          {/* Avatar */}
-          <IonAvatar style={{ width: '80px', height: '80px', marginBottom: '20px' }}>
-            <img alt="User Avatar" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </IonAvatar>
-         
-          {/* Email Input */}
-          <IonItem style={{ marginBottom: '15px', width: '80%' }}>
-            <IonInput label="Email:" placeholder="Enter your email" />
-          </IonItem>
+      <IonButton 
+        onClick={doLogin} 
+        expand="full" 
+        shape="round" 
+        style={{ marginTop: '15px', width: '100%' }}
+      >
+        Login
+      </IonButton>
 
-          {/* Password Input */}
-          <IonItem style={{ marginBottom: '15px', width: '80%' }}>
-            <IonInput type="password" label="Password:" placeholder="Enter your password" />
-          </IonItem>
+      <IonButton 
+        routerLink="/it35-lab/register" 
+        expand="full" 
+        fill="clear" 
+        shape="round" 
+        style={{ marginTop: '10px' }}
+      >
+        Don't have an account? Register here
+      </IonButton>
 
-          {/* Buttons */}
-          <IonButton onClick={doLogin} expand="block" style={{ width: '80%', height: '50px', fontWeight: 'bold' }}>
-            Login
-          </IonButton>
-          
-          <IonButton 
-            onClick={goToSignUp} 
-            expand="block" 
-            fill="outline" 
-            color="secondary" 
-            style={{ width: '80%', height: '50px', fontWeight: 'bold', marginTop: '10px' }}
-          >
-            Don't have an account? Register here
-          </IonButton>
+      {/* Reusable AlertBox Component */}
+      <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
 
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default Login;
+      {/* IonToast for success message */}
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message="Login successful! Redirecting..."
+        duration={1500}
+        position="top"
+        color="primary"
+      />
+    </div>
+  </IonContent>
+</IonPage>
