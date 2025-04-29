@@ -1,30 +1,28 @@
 import { 
   IonButtons,
-  IonContent, 
-  IonHeader, 
-  IonMenuButton, 
-  IonPage, 
-  IonTitle, 
-  IonToolbar 
+    IonContent, 
+    IonHeader, 
+    IonMenuButton, 
+    IonPage, 
+    IonTitle, 
+    IonToolbar 
 } from '@ionic/react';
-// Make sure this path is correct
-import FeedContainer from '../../components/FeedContainer';
+import FeedContainer from "../../components/FeedContainer";
+
 
 const Feed: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
+          <IonButtons slot='start'>
+            <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>Feed</IonTitle>
         </IonToolbar>
       </IonHeader>
-
       <IonContent fullscreen>
-        {/* Remove this div if you don't need static "Feed" text */}
-        {/* <div
+        <div
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -33,9 +31,7 @@ const Feed: React.FC = () => {
           }}
         >
           Feed
-        </div> */}
-        
-        {/* Proper usage of FeedContainer */}
+        </div>
         <FeedContainer />
       </IonContent>
     </IonPage>
