@@ -1,90 +1,83 @@
-<IonPage>
-  <IonContent 
-    className="ion-padding"
-    style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '100vh'
-    }}
-  >
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      maxWidth: '400px',
-      textAlign: 'center'
-    }}>
-      <IonAvatar
-        style={{
-          width: '120px',
-          height: '120px',
-          borderRadius: '50%', 
-          overflow: 'hidden'
-        }}
-      >
-        <IonIcon 
-          icon={logoIonic}
-          color="primary"
-          style={{ fontSize: '100px', color: '#6c757d' }} 
-        />
-      </IonAvatar>
-      <h1>USER LOGIN</h1>
+import React, { useState } from 'react';
+import { 
+    IonButton,
+    IonContent, 
+    IonHeader, 
+    IonPage, 
+    IonTitle, 
+    IonToolbar, 
+    IonInput,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonToast,
+    IonFooter
+} from '@ionic/react';
+import { useHistory } from 'react-router-dom'; 
+import { supabase } from '../utils/supabaseClient';
 
-      <IonInput
-        label="Email"
-        labelPlacement="floating"
-        fill="outline"
-        type="email"
-        placeholder="Enter Email"
-        value={email}
-        onIonChange={e => setEmail(e.detail.value!)}
-        style={{ width: '100%', marginTop: '10px' }}
-      />
+const Login: React.FC = () => {
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
 
-      <IonInput
-        fill="outline"
-        type="password"
-        placeholder="Password"
-        value={password}
-        onIonChange={e => setPassword(e.detail.value!)}
-        style={{ width: '100%', marginTop: '10px' }}
-      >
-        <IonInputPasswordToggle slot="end" />
-      </IonInput>
+    const doLogin = async () => {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-      <IonButton 
-        onClick={doLogin} 
-        expand="full" 
-        shape="round" 
-        style={{ marginTop: '15px', width: '100%' }}
-      >
-        Login
-      </IonButton>
+        if (error) {
+            setToastMessage(error.message);
+            setShowToast(true);
+        } else {
+            setToastMessage("Login Successful!");
+            setShowToast(true);
+            
+            setTimeout(() => {
+                history.push('/it35-lab/app'); 
+            }, 2000);
+        }
+    };
 
-      <IonButton 
-        routerLink="/it35-lab/register" 
-        expand="full" 
-        fill="clear" 
-        shape="round" 
-        style={{ marginTop: '10px' }}
-      >
-        Don't have an account? Register here
-      </IonButton>
+    return (
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>Login</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent className='ion-padding'>
+                <IonList>
+                    <IonItem>
+                        <IonLabel position="floating">Email</IonLabel>
+                        <IonInput 
+                            type="email" 
+                            value={email} 
+                            onIonChange={e => setEmail(e.detail.value!)} 
+                        />
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel position="floating">Password</IonLabel>
+                        <IonInput 
+                            type="password" 
+                            value={password} 
+                            onIonChange={e => setPassword(e.detail.value!)} 
+                        />
+                    </IonItem>
+                </IonList>
+                <IonButton onClick={doLogin} expand="full">Login</IonButton>
+                <IonButton onClick={() => history.push('/signup')} expand="full" color="secondary">Register</IonButton>
+            </IonContent>
+            <IonFooter>
+                <IonToast
+                    isOpen={showToast}
+                    onDidDismiss={() => setShowToast(false)}
+                    message={toastMessage}
+                    duration={2000}
+                />
+            </IonFooter>
+        </IonPage>
+    );
+};
 
-      {/* Reusable AlertBox Component */}
-      <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
-
-      {/* IonToast for success message */}
-      <IonToast
-        isOpen={showToast}
-        onDidDismiss={() => setShowToast(false)}
-        message="Login successful! Redirecting..."
-        duration={1500}
-        position="top"
-        color="primary"
-      />
-    </div>
-  </IonContent>
-</IonPage>
+export default Login;
