@@ -17,7 +17,7 @@ import {
     IonToolbar, 
     useIonRouter
 } from '@ionic/react'
-import {homeOutline, logOutOutline, rocketOutline, settingsOutline} from 'ionicons/icons';
+import {homeOutline, logOutOutline, rocketOutline, serverOutline, settingsOutline} from 'ionicons/icons';
 import { Redirect, Route } from 'react-router';
 import Home from './Home';
 import About from './about';
@@ -25,6 +25,7 @@ import Details from './details';
 import { supabase } from '../utils/supabaseClient';
 import { useState } from 'react';
 import EditProfilePage from './EditProfile';
+
 
 
 const Menu: React.FC = () => {
@@ -37,6 +38,7 @@ const Menu: React.FC = () => {
       {name:'Home', url: '/it35-lab/app/home', icon: homeOutline},
       {name:'About', url: '/it35-lab/app/about', icon: rocketOutline},
       {name:'Profile', url: '/it35-lab/app/profile', icon: settingsOutline},
+       {name:'Search', url: '/it35-lab/app/search', icon: serverOutline},
   ]
   const handleLogout = async () => {
       const { error } = await supabase.auth.signOut();
@@ -86,6 +88,7 @@ const Menu: React.FC = () => {
                   <Route exact path="/it35-lab/app/home/details" component={Details} />
                   <Route exact path="/it35-lab/app/about" component={About} />
                   <Route exact path="/it35-lab/app/profile" component={EditProfilePage} />
+                  
 
                   <Route exact path="/it35-lab/app">
                       <Redirect to="/it35-lab/app/home"/>
