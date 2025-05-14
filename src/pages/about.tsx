@@ -20,53 +20,34 @@ import {
   IonCol,
   IonText
 } from '@ionic/react';
+
 import {
-  codeOutline,
-  logoReact,
-  logoIonic,
-  logoJavascript,
-  logoGithub,
-  bookOutline,
-  schoolOutline,
-  trophyOutline,
-  hardwareChipOutline
+  buildOutline,
+  laptopOutline,
+  cloudOutline,
+  hardwareChipOutline,
+  constructOutline,
+  rocketOutline,
+  shieldCheckmarkOutline,
+  bookOutline
 } from 'ionicons/icons';
 
 const About: React.FC = () => {
-  const technologies = [
-    { name: 'React', icon: logoReact, description: 'A JavaScript library for building user interfaces' },
-    { name: 'Ionic', icon: logoIonic, description: 'Cross-platform mobile app development framework' },
-    { name: 'JavaScript', icon: logoJavascript, description: 'Core programming language for web development' },
-    { name: 'GitHub', icon: logoGithub, description: 'Version control and collaboration platform' }
+  const topics = [
+    { title: 'Software Development Life Cycle', icon: buildOutline, description: 'Phases include planning, analysis, design, implementation, testing, deployment, and maintenance.' },
+    { title: 'Types of Applications', icon: laptopOutline, description: 'Includes native, web-based, and hybrid applications depending on platform compatibility.' },
+    { title: 'App Architecture', icon: cloudOutline, description: 'Design structures like MVC, MVVM, and layered architecture ensure maintainability and scalability.' },
+    { title: 'Development Tools', icon: constructOutline, description: 'Popular tools include VS Code, Android Studio, Git, and Postman for API testing.' },
+    { title: 'Testing & Debugging', icon: shieldCheckmarkOutline, description: 'Involves unit testing, integration testing, and debugging practices to ensure quality.' },
+    { title: 'Deployment & Maintenance', icon: rocketOutline, description: 'Apps are published to stores or servers, then maintained with regular updates and patches.' }
   ];
 
-  const bestPractices = [
-    'Write clean, maintainable code',
-    'Follow component-based architecture',
-    'Implement responsive design',
-    'Use TypeScript for type safety',
-    'Follow Git workflow best practices',
-    'Write unit tests for components',
-    'Document your code',
-    'Optimize performance'
-  ];
+  const skills = ['UI/UX Design', 'Code Optimization', 'Version Control (Git)', 'Debugging', 'Responsive Layouts', 'API Integration'];
 
-  const learningResources = [
-    {
-      title: 'React Documentation',
-      url: 'https://reactjs.org/docs/getting-started.html',
-      type: 'Official Docs'
-    },
-    {
-      title: 'Ionic Framework Guide',
-      url: 'https://ionicframework.com/docs',
-      type: 'Framework Guide'
-    },
-    {
-      title: 'JavaScript MDN Web Docs',
-      url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-      type: 'Language Guide'
-    }
+  const resources = [
+    { name: 'GeeksforGeeks - App Dev', link: 'https://www.geeksforgeeks.org/software-engineering/' },
+    { name: 'Ionic Framework Docs', link: 'https://ionicframework.com/docs' },
+    { name: 'SDLC Explained', link: 'https://www.ibm.com/topics/software-development-life-cycle' }
   ];
 
   return (
@@ -82,24 +63,24 @@ const About: React.FC = () => {
 
       <IonContent fullscreen className="ion-padding">
 
-        {/* Technologies Used */}
+        {/* Core Topics */}
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
               <IonIcon icon={hardwareChipOutline} className="ion-margin-end" />
-              Technologies We Use
+              Core Topics in Application Development
             </IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             <IonGrid>
               <IonRow>
-                {technologies.map((tech, index) => (
+                {topics.map((item, index) => (
                   <IonCol size="12" sizeMd="6" key={index}>
                     <IonItem lines="none">
-                      <IonIcon icon={tech.icon} slot="start" color="primary" />
+                      <IonIcon icon={item.icon} slot="start" color="primary" />
                       <IonLabel>
-                        <h2>{tech.name}</h2>
-                        <p>{tech.description}</p>
+                        <h2>{item.title}</h2>
+                        <p>{item.description}</p>
                       </IonLabel>
                     </IonItem>
                   </IonCol>
@@ -109,23 +90,17 @@ const About: React.FC = () => {
           </IonCardContent>
         </IonCard>
 
-        {/* Best Practices */}
+        {/* Key Skills */}
         <IonCard>
           <IonCardHeader>
-            <IonCardTitle>
-              <IonIcon icon={trophyOutline} className="ion-margin-end" />
-              Best Practices
-            </IonCardTitle>
+            <IonCardTitle>Key Skills</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonList>
-              {bestPractices.map((practice, index) => (
-                <IonItem key={index} lines="none">
-                  <IonIcon icon={codeOutline} slot="start" color="success" />
-                  <IonLabel>{practice}</IonLabel>
-                </IonItem>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {skills.map((skill, index) => (
+                <IonChip key={index} color="tertiary">{skill}</IonChip>
               ))}
-            </IonList>
+            </div>
           </IonCardContent>
         </IonCard>
 
@@ -139,42 +114,20 @@ const About: React.FC = () => {
           </IonCardHeader>
           <IonCardContent>
             <IonList>
-              {learningResources.map((resource, index) => (
+              {resources.map((res, index) => (
                 <IonItem
                   key={index}
-                  href={resource.url}
+                  href={res.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   detail={true}
                 >
-                  <IonIcon icon={schoolOutline} slot="start" color="tertiary" />
                   <IonLabel>
-                    <h2>{resource.title}</h2>
-                    <p>{resource.type}</p>
+                    <h2>{res.name}</h2>
                   </IonLabel>
                 </IonItem>
               ))}
             </IonList>
-          </IonCardContent>
-        </IonCard>
-
-        {/* Quick Tips */}
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>Quick Tips</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonText color="medium">
-              <p>Helpful reminders for successful app development:</p>
-            </IonText>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '12px' }}>
-              <IonChip color="primary">Use Components</IonChip>
-              <IonChip color="secondary">State Management</IonChip>
-              <IonChip color="tertiary">Responsive Design</IonChip>
-              <IonChip color="success">Testing</IonChip>
-              <IonChip color="warning">Performance</IonChip>
-              <IonChip color="danger">Security</IonChip>
-            </div>
           </IonCardContent>
         </IonCard>
 
