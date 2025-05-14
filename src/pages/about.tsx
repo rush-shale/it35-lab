@@ -1,34 +1,35 @@
-import { 
-    IonButtons,
-    IonContent, 
-    IonHeader, 
-    IonMenuButton, 
-    IonPage, 
-    IonTitle, 
-    IonToolbar,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonChip,
-    IonGrid,
-    IonRow,
-    IonCol
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonIcon,
+  IonChip,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonText
 } from '@ionic/react';
-import { 
-    codeOutline,
-    logoReact,
-    logoIonic,
-    logoJavascript,
-    logoGithub,
-    bookOutline,
-    schoolOutline,
-    trophyOutline,
-    hardwareChipOutline
+import {
+  codeOutline,
+  logoReact,
+  logoIonic,
+  logoJavascript,
+  logoGithub,
+  bookOutline,
+  schoolOutline,
+  trophyOutline,
+  hardwareChipOutline
 } from 'ionicons/icons';
 
 const About: React.FC = () => {
@@ -71,15 +72,17 @@ const About: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonButtons slot='start'>
-            <IonMenuButton></IonMenuButton>
+        <IonToolbar color="primary">
+          <IonButtons slot="start">
+            <IonMenuButton />
           </IonButtons>
           <IonTitle>About App Development</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen className="ion-padding">
-        {/* Technologies Section */}
+
+        {/* Technologies Used */}
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
@@ -91,7 +94,7 @@ const About: React.FC = () => {
             <IonGrid>
               <IonRow>
                 {technologies.map((tech, index) => (
-                  <IonCol size="6" key={index}>
+                  <IonCol size="12" sizeMd="6" key={index}>
                     <IonItem lines="none">
                       <IonIcon icon={tech.icon} slot="start" color="primary" />
                       <IonLabel>
@@ -106,7 +109,7 @@ const About: React.FC = () => {
           </IonCardContent>
         </IonCard>
 
-        {/* Best Practices Section */}
+        {/* Best Practices */}
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
@@ -117,8 +120,8 @@ const About: React.FC = () => {
           <IonCardContent>
             <IonList>
               {bestPractices.map((practice, index) => (
-                <IonItem key={index}>
-                  <IonIcon icon={codeOutline} slot="start" color="primary" />
+                <IonItem key={index} lines="none">
+                  <IonIcon icon={codeOutline} slot="start" color="success" />
                   <IonLabel>{practice}</IonLabel>
                 </IonItem>
               ))}
@@ -126,7 +129,7 @@ const About: React.FC = () => {
           </IonCardContent>
         </IonCard>
 
-        {/* Learning Resources Section */}
+        {/* Learning Resources */}
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
@@ -137,8 +140,14 @@ const About: React.FC = () => {
           <IonCardContent>
             <IonList>
               {learningResources.map((resource, index) => (
-                <IonItem key={index} href={resource.url} target="_blank">
-                  <IonIcon icon={schoolOutline} slot="start" color="primary" />
+                <IonItem
+                  key={index}
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  detail={true}
+                >
+                  <IonIcon icon={schoolOutline} slot="start" color="tertiary" />
                   <IonLabel>
                     <h2>{resource.title}</h2>
                     <p>{resource.type}</p>
@@ -149,13 +158,16 @@ const About: React.FC = () => {
           </IonCardContent>
         </IonCard>
 
-        {/* Quick Tips Section */}
+        {/* Quick Tips */}
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>Quick Tips</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            <IonText color="medium">
+              <p>Helpful reminders for successful app development:</p>
+            </IonText>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '12px' }}>
               <IonChip color="primary">Use Components</IonChip>
               <IonChip color="secondary">State Management</IonChip>
               <IonChip color="tertiary">Responsive Design</IonChip>
@@ -165,6 +177,7 @@ const About: React.FC = () => {
             </div>
           </IonCardContent>
         </IonCard>
+
       </IonContent>
     </IonPage>
   );
