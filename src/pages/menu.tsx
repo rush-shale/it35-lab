@@ -38,7 +38,7 @@ const Menu: React.FC = () => {
       {name:'Home', url: '/it35-lab/app/home', icon: homeOutline},
       {name:'About', url: '/it35-lab/app/about', icon: rocketOutline},
       {name:'Profile', url: '/it35-lab/app/profile', icon: settingsOutline},
-       {name:'Search', url: '/it35-lab/app/search', icon: serverOutline},
+       
   ]
   const handleLogout = async () => {
       const { error } = await supabase.auth.signOut();
