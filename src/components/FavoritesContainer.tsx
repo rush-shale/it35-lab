@@ -20,33 +20,33 @@ import { heart, heartOutline } from 'ionicons/icons';
 const UtiliTrackFavorites: React.FC = () => {
   const [favorites, setFavorites] = useState<{ title: string; img: string; liked: boolean }[]>([
     {
-      title: 'Electric Meter Quest',
-      img: 'https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif',
+      title: 'Dota 2',
+      img: 'https://media1.tenor.com/m/fTHpxCR1160AAAAd/gaben-rage.gif',
       liked: false,
     },
     {
-      title: 'Water Leak Hunter',
-      img: 'https://media.giphy.com/media/l0HlTlvFdp8fPffmI/giphy.gif',
+      title: 'The Last of Us movie',
+      img: 'https://media1.tenor.com/m/evFgsLZ4We0AAAAd/tlou-infected.gif',
       liked: false,
     },
     {
-      title: 'Grid Sync Challenge',
-      img: 'https://media.giphy.com/media/j5QcmXoFWl4Q4/giphy.gif',
+      title: 'Clash Of Clans',
+      img: 'https://media1.tenor.com/m/-WaHDzPpfBgAAAAC/winzardo-showtime.gif',
       liked: false,
     },
     {
-      title: 'Power Pole Patrol',
-      img: 'https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif',
+      title: 'Vapes',
+      img: 'https://media1.tenor.com/m/wBdcTrM7mt0AAAAC/queer-eye.gif',
       liked: false,
     },
     {
-      title: 'Transformer Repair Run',
-      img: 'https://media.giphy.com/media/9J7tdYltWyXIY/giphy.gif',
+      title: 'Motor Motor',
+      img: 'https://media1.tenor.com/m/HosT817m5RkAAAAC/motorbike.gif',
       liked: false,
     },
     {
-      title: 'Battery Backup Mission',
-      img: 'https://media.giphy.com/media/XreQmk7ETCak0/giphy.gif',
+      title: ' Sometimes Money HAHAHA',
+      img: 'https://media1.tenor.com/m/nN0WuOGYU0sAAAAC/disapprove-disappointment.gif',
       liked: false,
     },
   ]);
