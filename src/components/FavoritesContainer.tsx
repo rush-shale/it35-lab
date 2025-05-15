@@ -128,8 +128,11 @@ const UtiliTrackFavorites: React.FC = () => {
           <IonImg
             src={selectedImage?.img}
             alt={selectedImage?.title}
-            style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+            style={{ width: '100%', height: 'auto', borderRadius: '10px', marginBottom: '1rem' }}
           />
+          <IonButton expand="block" color="medium" onClick={() => setShowModal(false)}>
+            Close
+          </IonButton>
         </IonContent>
       </IonModal>
 
