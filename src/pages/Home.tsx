@@ -59,4 +59,4 @@ import Search from './home-tabs/Search';
     );
   };
   
-  export default Home; .
+  export default Home; 
