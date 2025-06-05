@@ -33,7 +33,7 @@ import Search from './home-tabs/Search';
     return (
       <IonReactRouter>
         <IonTabs>
-          <IonTabBar slot="bottom">
+          <IonTabBar slot="bottom"> .
 
             {tabs.map((item, index) => (
               <IonTabButton key={index} tab={item.tab} href={item.url}>
